@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thrillo FLy</title>
+</head>
+<body>
+    <h1>Confirmation Step</h1>
+    <div class="flight-details">
+        <%if (typeof item != 'undefined'){ %>
+            <div class="item">
+
+               <h1>Flight ID: <%=item.id%></h1> 
+               <p>Price: <%=item.price.grandTotal%></p>
+               <p>Airline Code: <%= item.validatingAirlineCodes%></p>
+            </div>
+       <% }%>
+        <h1>Flight Details</h1>
+    </div>
+    
+
+    <div class="user-details">
+        <form action="/bookflight" method="post">
+            <input type="text" placeholder="name" name="fullName">
+            <input type="email" placeholder="email" name="email">
+            <input type="text" placeholder="gender.." name="gender">
+            <button type="submit" >Confirm Details</button>
+        </form>
+    </div>
+</body>
+</html>
+
+<!-- onclick="window.location.href='/ordersummary'" -->

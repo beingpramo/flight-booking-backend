@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thrillo Fly</title>
+</head>
+<body>
+    <div class="booking-container">
+        <form action="/bookingpage" method="post">
+            <input type="text" placeholder="Source..." name="origin">
+            <input type="text" placeholder="Destination..." name="destination">
+            <input type="date" name="departureDate">
+            <input type="number" placeholder="adults.." name="adults">
+            <button type="submit">search</button>
+        </form>
+    </div>
+
+<!-- myTemplate.ejs -->
+
+    <div class="response">
+     <%    if (typeof flightSearchResults !== 'undefined') { %> 
+             <% flightSearchResults.forEach(item => { %>
+                 <h3>Flight ID: <%= `${item.id}` %> </h3>  
+                 <p>Price : <%= `${item.price.grandTotal}`%></p>
+                 <p>Airline CODE: <%=`${item.validatingAirlineCodes}`%></p> <br>
+                 <a href="flightoffersprice/<%= item.id %>">select</a>
+                <% }) %>
+         <% } else{ %>
+                <h1>No Results</h1>
+        <%  } %>
+        
+    </div>
+</body>
+</html>
+
+
+
+<!-- {
+    type: 'flight-offer',
+    id: '32',
+    source: 'GDS',
+    instantTicketingRequired: false,
+    nonHomogeneous: false,
+    oneWay: false,
+    lastTicketingDate: '2023-02-20',
+    numberOfBookableSeats: 9,
+    itineraries: [ [Object] ],
+    price: {
+      currency: 'EUR',
+      total: '603.23',
+      base: '326.00',
+      fees: [Array],
+      grandTotal: '603.23'
+    },
+    pricingOptions: { fareType: [Array], includedCheckedBagsOnly: true },
+    validatingAirlineCodes: [ 'HR' ],
+    travelerPricings: [ [Object] ]
+  } -->
